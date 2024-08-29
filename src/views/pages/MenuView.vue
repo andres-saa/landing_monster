@@ -1,4 +1,4 @@
-<template>
+\<template>
   <div style="max-width: 800px;background-color: var(--primary-color);border-radius: 1rem;"
     class="mx-auto px-3 text-white 0 my-0 grid pb-8 my-6">
 
@@ -40,9 +40,9 @@
 
 
       <div class="my-2" style="display: flex;gap: 1rem;flex-wrap: wrap ;line-height: 4rem; align-items: center;justify-content: end;">
-        <p class=" text-5xl md:text-7xl p-0 m-0   text-white"
+        <p class=" text-5xl md:text-7xl p-0 m-0   text-white" v-if="store.currentProduct.last_price"
           style="color:black;opacity: .6;text-decoration: line-through; font-weight: bold">
-          {{ `‎ ${formatoPesosColombianos(store.currentProduct.price)} ‎ ` }}</p>
+          {{ `‎ ${formatoPesosColombianos(store.currentProduct.last_price)} ‎ ` }}</p>
 
         <p class=" text-6xl md:text-8xl p-0 m-0  text-black" style="color:black;font-weight: bold">
           {{ `${formatoPesosColombianos(store.currentProduct.price)} ` }}</p>
@@ -65,7 +65,7 @@
 
         <img :class="see ? 'cargado' : 'sin-cargar'" :onload="seeImage" class="col-12 p-0 "
           :src="`https://backend.salchimonster.com/read-product-image/600/${store.currentProduct.product_name}`" alt=""
-          v-show="see" style="width: 100%;object-fit: contain; aspect-ratio: 1/1;">
+          v-show="see" style="width: 100%;object-fit: contain; aspect-ratio: 1/1;border-radius: 2rem;">
 
 
 
@@ -323,7 +323,7 @@ onBeforeMount(async () => {
       "product_description": product.product_description,
       "category_id": product.category_id,
       "category_name": product.category_name,
-      "last_price": null
+      "last_price": product.last_price
     }
 
     store.currentProduct = { ...new_product }
